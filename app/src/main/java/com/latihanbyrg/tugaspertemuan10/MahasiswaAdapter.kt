@@ -11,9 +11,9 @@ typealias OnClickMahasiswa = (Mahasiswa) -> Unit
 class MahasiswaAdapter(
     private val listMahasiswa: List<Mahasiswa>,
     private val onClickMahasiswa: OnClickMahasiswa
-) : RecyclerView.Adapter<MahasiswaAdapter.itemMahasiswaViewHolder>() {
+) : RecyclerView.Adapter<MahasiswaAdapter.ItemMahasiswaViewHolder>() {
 
-    inner class itemMahasiswaViewHolder(
+    inner class ItemMahasiswaViewHolder(
         private val binding: ItemMahasiswaBinding
     ) : RecyclerView.ViewHolder(binding.root)
     {
@@ -47,18 +47,17 @@ class MahasiswaAdapter(
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): itemMahasiswaViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemMahasiswaViewHolder {
         val binding = ItemMahasiswaBinding.inflate(
             LayoutInflater.from(parent.context),
             parent, false)
-        return itemMahasiswaViewHolder(binding)
+        return ItemMahasiswaViewHolder(binding)
     }
 
-    override fun getItemCount(): Int {
-        return listMahasiswa.size
-    }
+    override fun getItemCount(): Int = listMahasiswa.size
 
-    override fun onBindViewHolder(holder: itemMahasiswaViewHolder, position: Int) {
+
+    override fun onBindViewHolder(holder: ItemMahasiswaViewHolder, position: Int) {
         holder.bind(listMahasiswa[position])
     }
 
